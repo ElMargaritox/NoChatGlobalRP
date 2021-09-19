@@ -13,9 +13,9 @@ using UnityEngine;
 
 namespace NoChatGlobalRP
 {
-    public class Class1 : RocketPlugin<Config>
+    public class NoChatGlobalRPPlugin : RocketPlugin<NoChatGlobalRPConfig>
     {
-        public Class1 Instance;
+        public NoChatGlobalRPPlugin Instance;
         protected override void Load()
         {
             Instance = this;
@@ -27,7 +27,7 @@ namespace NoChatGlobalRP
         {
             if (!player.IsAdmin)
             {
-                if(chatMode == EChatMode.GLOBAL)
+                if(chatMode == EChatMode.GLOBAL & !message.Contains("/"))
                 {
                     cancel = true;
                     UnturnedChat.Say(player, Configuration.Instance.mensaje, true);
@@ -38,7 +38,6 @@ namespace NoChatGlobalRP
         protected override void Unload()
         {
             UnturnedPlayerEvents.OnPlayerChatted -= Chat;
-            Instance.UnloadPlugin();
         }
     }
 }

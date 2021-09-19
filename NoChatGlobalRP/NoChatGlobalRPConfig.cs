@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace NoChatGlobalRP
 {
-  public  class Config : IRocketPluginConfiguration
+  public  class NoChatGlobalRPConfig : IRocketPluginConfiguration
     {
         public string mensaje;
         public void LoadDefaults()
